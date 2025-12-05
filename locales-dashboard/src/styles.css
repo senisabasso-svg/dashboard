@@ -1,0 +1,202 @@
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --ok: #10b981;
+  --off: #ef4444;
+  --border-color: rgba(255, 255, 255, .08);
+  --search-bg: #0b1220;
+}
+
+body.light {
+  --bg: #f3f4f6;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border-color: rgba(0, 0, 0, .1);
+  --search-bg: #e5e7eb;
+}
+
+* { box-sizing: border-box }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu;
+  background: var(--bg);
+  color: var(--text);
+  transition: background .2s, color .2s;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 24px }
+.header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px }
+.card { background: var(--card); border-radius: 16px; padding: 16px; box-shadow: 0 6px 24px rgba(0,0,0,.1); border: 1px solid var(--border-color); cursor: pointer; transition: background .2s, border-color .2s; }
+.badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px }
+.badge.ok { background: rgba(16,185,129,.15); color: var(--ok); border: 1px solid rgba(16,185,129,.25) }
+.badge.off { background: rgba(239,68,68,.15); color: var(--off); border: 1px solid rgba(239,68,68,.25) }
+.time { color: var(--muted); font-size: 12px }
+.footer { margin-top: 20px; color: var(--muted); font-size: 12px }
+.search { padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--search-bg); color: var(--text); width: 260px; transition: background .2s, border-color .2s; }
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.modal-content {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  background: var(--card);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.35);
+  border: 1px solid var(--border-color);
+  text-align: center;
+  cursor: default;
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.filters select, .filters input {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--search-bg);
+  color: var(--text);
+  transition: background .2s, border-color .2s;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.card.inactive:hover {
+  animation: pulse 1s infinite;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  height: 40px;
+}
+
+.logo-container h1 {
+  font-size: 24px;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  background: var(--search-bg);
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: background .2s, border-color .2s;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.login-form {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.1);
+  border: 1px solid var(--border-color);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-form .logo {
+  height: 60px;
+  margin-bottom: 16px;
+}
+
+.login-form h2 {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--search-bg);
+  color: var(--text);
+  font-size: 16px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: none;
+  background: var(--ok);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.login-form button:hover {
+  opacity: 0.9;
+}
+
+.error-message {
+  color: var(--off);
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 5px 10px;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  color: #f0f0f0;
+}
+
+.logout-button {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logout-button:hover {
+  background-color: #e74c3c;
+}

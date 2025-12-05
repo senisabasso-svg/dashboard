@@ -1,0 +1,22 @@
+{
+  "name": "locales-dashboard",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "dev:public": "concurrently \"npm run dev\" \"cmd /c npx localtunnel --port 5173 --subdomain magodash\""
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^9.2.1",
+    "vite": "^5.4.2"
+  }
+}
